@@ -3,16 +3,19 @@ Skript install.sh pracuej s argumentovym suborom args.txt.
 Pre zmenu arguemntov zmente obsah.
 Automaticky spusta skript na danom virtualnom stroji a v output.txt je vystup vasho skriptu.
 Pre pridanie suborov, priecinkov po vybuildeni docker obrazu pouzite.
-```
-docker run -ti ios bash
++- pre Instalaciu treba stiahnut docker , podporne nastroje, pre spustenie daemona dockeru
 ```
 sudo yum install -y docker
-
+systemctl start docker.service
+```
 spustenie dockerfile(lowercase nazov/tag) :
 ```
 docker build -t nazov/tag .
 ```
-
+pre spustenie vytvoreneho centos 6.6 obrazu
+```
+docker run -ti ios bash
+```
 nazov kontajneru
 ```
 docker inspect --format='{{.Name}}' $(sudo docker ps -aq --no-trunc)
