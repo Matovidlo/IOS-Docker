@@ -44,3 +44,10 @@ docker start -ai ios (mozete mat ine blbe nazvy kontajnerov)
 docker cp ios:/opt/output.txt output.txt
 ```
 Ak nastala nejaka chyba mal by docker v builde vyhlasit dany problem.
+
+## Any other usage
+Ak uz mame vytvoreny jak container tak aj virtualku mozeme k nej este pristupovat znova pomocou prikazu run inak staci pustit build kde sa nakopiruje novy dirgraph a v output.txt zase najdeme vystup skriptu.
+```
+docker build -t ios .
+docker cp ios:/opt/output.txt output.txt
+```
