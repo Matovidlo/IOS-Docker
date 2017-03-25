@@ -1,4 +1,4 @@
-#Ak je problem s obrazmi
+# Ak je problem s obrazmi
 Zmazeme prikazmi dole
 ```
 docker rm $(docker ps -aq)
