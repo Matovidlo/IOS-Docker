@@ -2,11 +2,13 @@
 sudo yum install -y docker
 
 spustenie dockerfile(lowercase nazov/tag) :
-```docker build -t nazov/tag .
+```
+docker build -t nazov/tag .
 ```
 
 nazov kontajneru
-```docker inspect --format='{{.Name}}' $(sudo docker ps -aq --no-trunc)
+```
+docker inspect --format='{{.Name}}' $(sudo docker ps -aq --no-trunc)
 ```
 output :
 ```
