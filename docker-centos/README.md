@@ -30,8 +30,8 @@ Je moznost vyvoja applikacie vramci dockra
 docker run -ti ios bash
 vi proj2.c
 ```
-#Pozor!
-<b style='color:red'>UPOZORNENIE</b>.
+# Pozor!
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+)  UPOZORNENIE.
 pre upravovanie dockru musite po uprave urobit taku zvlastnu vec a to commitnut zmeny
 ```
 docker ps -a ( vidite fejkovy nazov vasho kontajnera v ktorom su upravy je to hned ten navrchu)
