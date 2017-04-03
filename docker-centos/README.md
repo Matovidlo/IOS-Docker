@@ -30,6 +30,19 @@ Je moznost vyvoja applikacie vramci dockra
 docker run -ti ios bash
 vi proj2.c
 ```
-
+#Pozor!
+<b style='color:red'>UPOZORNENIE</b>.
+pre upravovanie dockru musite po uprave urobit taku zvlastnu vec a to commitnut zmeny
+```
+docker ps -a ( vidite fejkovy nazov vasho kontajnera v ktorom su upravy je to hned ten navrchu)
+docker commit <fejkovy-nazov-kontajnera> <nazov kontajnera v ktorom su zmeny>
+docker run -ti <nazov kontajnera v ktorom su zmeny>
+```
+<b style='color:red'>Priklad</b>.
+```
+docker ps -a | head -n 2 = boring_mclean
+docker commit boring_mclean ios
+docker run -ti ios bash
+```
 pre pridanie suborov do dockru je potrebne upravit Dockerfile.
 Pre akekolvek problemy <xvasko12@stud.fit.vutbr.cz> / facebook / alebo sa pozrite do hlavicky hore.
