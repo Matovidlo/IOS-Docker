@@ -32,13 +32,14 @@ vi proj2.c
 ```
 # Pozor!
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)  UPOZORNENIE.
+
 pre upravovanie dockru musite po uprave urobit taku zvlastnu vec a to commitnut zmeny
 ```
 docker ps -a ( vidite fejkovy nazov vasho kontajnera v ktorom su upravy je to hned ten navrchu)
 docker commit <fejkovy-nazov-kontajnera> <nazov kontajnera v ktorom su zmeny>
 docker run -ti <nazov kontajnera v ktorom su zmeny>
 ```
-<b style='color:red'>Priklad</b>.
+<span style="color:orange;">Priklad</span>
 ```
 docker ps -a | head -n 2 = boring_mclean
 docker commit boring_mclean ios
