@@ -1,8 +1,8 @@
 # IOS-Docker
 
 # Instalace
-## [Centos](https://docs.docker.com/engine/installation/linux/fedora/#install-using-the-repository)
-## [Windows](https://docs.docker.com/docker-for-windows/install)
+**[Centos](https://docs.docker.com/engine/installation/linux/fedora/#install-using-the-repository)**  
+**[Windows](https://docs.docker.com/docker-for-windows/install)**
 
 
 ## [Vytvoření image](https://docs.docker.com/engine/reference/commandline/build/)
@@ -40,5 +40,5 @@ docker run --rm --name ios-centos -v /$(pwd):/code ios-centos ./run.sh
 
 **Docker build stačí spustit jen jednou !!!** Poté jen pouštíme kontejner (druhý příkaz)
 
-S argumentem `-ti` spustí interaktivní kontejner
+S argumentem `-ti` spustíme interaktivní kontejner
 
