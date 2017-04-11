@@ -1,56 +1,44 @@
 # IOS-Docker
-Skript install.sh pracuej s argumentovym suborom args.txt.
-Pre zmenu arguemntov zmente obsah.
-Automaticky spusta skript na danom virtualnom stroji a v output.txt je vystup vasho skriptu.
-Pre pridanie suborov, priecinkov po vybuildeni docker obrazu pouzite.
-+- pre Instalaciu treba stiahnut docker , podporne nastroje, pre spustenie daemona dockeru
-```
-sudo yum install -y docker
-systemctl start docker.service
-```
-spustenie dockerfile(lowercase nazov/tag) :
-```
-docker build -t nazov/tag .
-```
-pre spustenie vytvoreneho centos 6.6 obrazu
-```
-docker run -ti ios bash
-```
-nazov kontajneru
-```
-docker inspect --format='{{.Name}}' $(sudo docker ps -aq --no-trunc)
-```
-output :
-```
-docker cp <nazov-kontajneru>:SOURCE_DIRECTORY/FILE DESTINATION_DIRECTORY
-```
-skopirujte z priecinku /opt vsetky subory do vami zadaneho priecinku pripadne do aktualneho priecinku (./) a v
-subore vasa/cesta/output.txt najdete dockerom vygenerovane vysledky vasho projektu 1, projektu 2, a podobne.
-Bezi to na CentOS 6.6 ako merlin, pre zmenu verzie pripadne zmenu OS nacitajte manual docker FROM \<image-name>
 
-## Example
+# Instalace
+## [Centos](https://docs.docker.com/engine/installation/linux/fedora/#install-using-the-repository)
+## [Windows](https://docs.docker.com/docker-for-windows/install)
 
-vojdeme do priecinku a nakopirujeme dirgraph, ktory chceme testovat
-```
-cd docker-centos
-cp /home/IOS/projekt1/dirgraph .
-docker build -t iosProject .
-docker run -ti ios bash
-[vlozte lubovolny pocet adresarov a podobne, ukoncenie prehladavania obrazu : exit || Ctrl-D]
-```
-Prvy build je trosku dlhsi pockame.
-Dalej si vytvorime kontajner a stiahneme si output nasho skriptu.
-Pozn. pre upravu pouzite skript install.sh kde sa vypise na zaciatku a na konci "Starting script" a "End of script". Je to mozne zrusit je to obycajne echo
-```
-docker create --name ios iosProject bash
-docker start -ai ios (mozete mat ine blbe nazvy kontajnerov)
-docker cp ios:/opt/output.txt output.txt
-```
-Ak nastala nejaka chyba mal by docker v builde vyhlasit dany problem.
 
-## Any other usage
-Ak uz mame vytvoreny jak container tak aj virtualku mozeme k nej este pristupovat znova pomocou prikazu run inak staci pustit build kde sa nakopiruje novy dirgraph a v output.txt zase najdeme vystup skriptu.
+## [Vytvoření image](https://docs.docker.com/engine/reference/commandline/build/)
+`docker build  <path>`
+
+**Argumenty:**  
+`-t <název tagu>`: otaguje image podle argumentu přepínače   
+`-f <path>` : Cesta k `Dockerfile` souboru, defaultně se hledá v argumentu příkazu
+
+
+## [Spuštění kontejneru](https://docs.docker.com/engine/reference/run/)
+`docker run <image_name>` vytváří nový kontejner z image a spustí ho, je to zkratka pro `docker create` a následný `docker start`  
+
+**Argumenty:**  
+`--rm` : kontejner se smaže automaticky po ukončení  
+`--name <name>` : explicitní název kontejneru  
+`-v <host_folder:container_folder>` nastaví přípojný bod z hosta na kontejner
+
+## [Zobrazení kontejneru](https://docs.docker.com/engine/reference/commandline/ps/)
+`docker ps` : zobrazí aktivní kontejnery  
+`docker ps -a` : zobrazí všechny kontejnery, i neaktivní  
+
+## Smazání kontejnerů
+`docker rm <name|hash>` : smaže specifický kontejner  
+`docker rm -f <name|hash>` : smaže specifický kontejner i když běží  
+`docker rm -f $(docker ps -qa)` : smaže všechny kontajnery
+
+
+## Ukázka použití
+
 ```
-docker build -t ios .
-docker cp ios:/opt/output.txt output.txt
+docker build -t ios-centos .  
+docker run --rm --name ios-centos -v /$(pwd):/code ios-centos ./run.sh
 ```
+
+**Docker build stačí spustit jen jednou !!!** Poté jen pouštíme kontejner (druhý příkaz)
+
+S argumentem `-ti` spustí interaktivní kontejner
+
