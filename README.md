@@ -25,7 +25,7 @@
 `docker ps` : zobrazí aktivní kontejnery  
 `docker ps -a` : zobrazí všechny kontejnery, i neaktivní  
 
-## Smazání kontejnerů
+## [Smazání kontejnerů](https://docs.docker.com/engine/reference/commandline/rm/)
 `docker rm <name|hash>` : smaže specifický kontejner  
 `docker rm -f <name|hash>` : smaže specifický kontejner i když běží  
 `docker rm -f $(docker ps -qa)` : smaže všechny kontajnery
